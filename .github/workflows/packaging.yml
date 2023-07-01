@@ -1,0 +1,22 @@
+# The purpose of this action is to build the contents of this repository into an SBOL package
+name: packaging
+
+# Controls when the action will run.
+on:
+  [push]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:   
+  distribution_build:
+    name: Check package structure and builds distribution
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository for building
+        uses: actions/checkout@v3
+      - name: Execute distribution build
+        uses: iGEM-Engineering/iGEM-actions@main
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        
+
+  
